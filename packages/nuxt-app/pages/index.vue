@@ -1,7 +1,5 @@
 <template>
   <v-app>
-    <!-- <v-app-bar app>WaarneemApp</v-app-bar> -->
-
     <v-main>
       <v-container>
         <v-row no-gutters style="height: 150px">

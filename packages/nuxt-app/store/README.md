@@ -1,10 +1,9 @@
-# STORE
+# Start Dev
 
-**This directory is not required, you can delete it if you don't want to use it.**
+yarn dev
 
-This directory contains your Vuex Store files.
-Vuex Store option is implemented in the Nuxt.js framework.
+Please find the code logic in the folder
 
-Creating a file in this directory automatically activates the option in the framework.
+src/packages/nuxt-app/modules/shift
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/vuex-store).
+To review the code start looking at pages/index.vue file

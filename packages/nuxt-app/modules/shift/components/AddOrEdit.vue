@@ -70,6 +70,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { DEFAULT_SHIFT_DATE_MODEL } from '../shift.constants'
+import { ShiftDates } from '../shift.types'
 export default Vue.extend({
   data: () => ({
     dates: null,
@@ -77,11 +78,11 @@ export default Vue.extend({
   }),
   watch: {
     dates(newDatesList: string[]) {
-      const tempList = []
+      const tempList = [] as ShiftDates[]
 
       newDatesList?.forEach((date) => {
         const currentDate = this.$store.state.shift.currentShift.datesList.find(
-          (dates) => dates.date == date
+          (dates: ShiftDates) => dates.date == date
         )
 
         console.log(currentDate)
@@ -95,7 +96,7 @@ export default Vue.extend({
   mounted() {
     if (this.$store.state.shift.currentShift.datesList.length) {
       this.dates = this.$store.state.shift.currentShift.datesList.map(
-        (list) => list.date
+        (list: ShiftDates) => list.date
       )
     }
   },

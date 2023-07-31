@@ -1,5 +1,5 @@
 export type ShiftDates = {
-  date: Date
+  date: string
   startTime?: Date
   endTime?: Date
   price?: number

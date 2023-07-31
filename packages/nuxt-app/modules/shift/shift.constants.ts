@@ -6,7 +6,7 @@ export const DEFAULT_SHIFT_MODEL: Shift = {
   datesList: [],
 }
 export const DEFAULT_SHIFT_DATE_MODEL: ShiftDates = {
-  date: new Date(),
+  date: '',
   startTime: undefined,
   endTime: undefined,
   price: undefined,

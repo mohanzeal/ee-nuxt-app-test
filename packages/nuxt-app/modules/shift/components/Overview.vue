@@ -19,7 +19,7 @@
       <v-app-bar elevation="0">
         <v-toolbar-title>Shifts</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn elevation="2" @click="toggleDrawer">Add Shift</v-btn>
+        <v-btn elevation="2" @click="addShift">Add Shift</v-btn>
       </v-app-bar>
     </v-col>
     <v-col cols="12" gutter="2">
@@ -60,6 +60,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { DEFAULT_SHIFT_MODEL } from '../shift.constants'
+import { Shift, ShiftDates } from '../shift.types'
 
 export default Vue.extend({
   data: () => ({
@@ -67,14 +69,13 @@ export default Vue.extend({
   }),
   computed: {
     filteredList() {
-      console.log(this.filterPrice)
-      const shifts = []
-      this.$store.state.shift.shiftList.forEach((shift) => {
-        const filtered = []
-        shift.datesList.forEach((date) => {
+      const shifts = [] as Shift[]
+      this.$store.state.shift.shiftList.forEach((shift: Shift) => {
+        const filtered = [] as ShiftDates[]
+        shift.datesList.forEach((date: ShiftDates) => {
           if (
-            this.filterPrice[0] < parseInt(date.price) &&
-            this.filterPrice[1] > parseInt(date.price)
+            this.filterPrice[0] < parseInt(date.price as any) &&
+            this.filterPrice[1] > parseInt(date.price as any)
           ) {
             filtered.push(date)
           }
@@ -97,6 +98,10 @@ export default Vue.extend({
       this.$store.state.shift.currentShift = JSON.parse(
         JSON.stringify(this.$store.state.shift.shiftList[index])
       )
+      this.toggleDrawer()
+    },
+    addShift() {
+      this.$store.commit('shift/reset')
       this.toggleDrawer()
     },
     toggleDrawer() {
